@@ -1,6 +1,6 @@
 # Admin To Console
 
-`composer install tiny-pixel/admin-to-console`
+`composer require tiny-pixel/admin-to-console`
 
 One super minimal plugin file, MIT licensed, installable via composer.
 
