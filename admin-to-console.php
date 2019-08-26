@@ -10,59 +10,52 @@
  * License URI:   http://opensource.org/licenses/MIT
  **/
 
-namespace TinyPixel\Plugins;
+(new class {
+    /**
+     * Invoke class.
+     *
+     * @return void
+     */
+    public function __invoke() : void
+    {
+        add_action('admin_notices', [$this, 'startBuffer']);
 
-add_action(
-    'plugins_loaded',
-    __NAMESPACE__ .'\\admin_to_console'
-);
+        add_action('user_admin_notices', [$this, 'startBuffer']);
 
-function admin_to_console()
-{
-    start_logger(set_type());
+        add_action('all_admin_notices', [$this, 'processNotices']);
+    }
 
-    add_action(
-        'all_admin_notices',
-        __NAMESPACE__ .'\\log',
-    );
-}
+    /**
+     * Start buffer
+     */
+    public function startBuffer()
+    {
+        ob_start();
+    }
 
-function set_type()
-{
-    return is_user_admin()
-            ? 'user_admin_notices'
-            : 'admin_notices';
-}
+    /**
+     * Process admin notifications
+     *
+     * @return string
+     */
+    public function processNotices()
+    {
+        $notices = trim(strip_tags(ob_get_clean()));
 
-function start_logger($action)
-{
-    add_action(
-        $action,
-        function () {
-            ob_start();
+        if (! $notices) {
+            $notices = 'No admin notices';
         }
-    );
-}
 
-function log()
-{
-    $log = strip_tags(trim(ob_get_clean()));
+        $this->consoleOutput($notices);
+    }
 
-    if (!$log) :
-        return;
-    else :
-        send_to_console($log);
-    endif;
-}
-
-function send_to_console($nags)
-{
-    add_action('wp_enqueue_scripts', function () {
-        register_script();
-
-        wp_add_inline_script(
-            'admin-to-console',
-            'console.log(`'. $log .'`);'
-        );
-    });
-}
+    /**
+     * Console output
+     */
+    public function consoleOutput(string $bufferOut)
+    {
+        wp_register_script('admin-to-console', '');
+        wp_enqueue_script('admin-to-console');
+        wp_add_inline_script('admin-to-console', 'console.log(`'. $bufferOut .'`);');
+    }
+})();

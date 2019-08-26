@@ -1,6 +1,7 @@
 {
   "name": "tiny-pixel/admin-to-console",
   "type": "wordpress-plugin",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "WordPress plugin that pipes nags to console",
   "homepage": "https://tinypixel.io/",
@@ -17,11 +18,6 @@
   ],
   "support": {
     "issues": "https://github.com/pixelcollective/admin-to-console/issues"
-  },
-  "autoload": {
-    "psr-4": {
-      "TinyPixel\\Plugins\\": "./"
-    }
   },
   "require": {
     "php": "^7.1",
