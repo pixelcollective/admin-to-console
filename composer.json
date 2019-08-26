@@ -1,7 +1,7 @@
 {
   "name": "tiny-pixel/admin-to-console",
   "type": "wordpress-plugin",
-  "version": "1.1",
+  "version": "1.1.0",
   "license": "MIT",
   "description": "WordPress plugin that pipes nags to console",
   "homepage": "https://tinypixel.io/",

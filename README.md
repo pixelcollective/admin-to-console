@@ -1,8 +1,10 @@
 # Admin To Console
 
-`composer require tiny-pixel/admin-to-console`
+Output the contents of WordPress admin nag notices to the browser console and keep your users happy / blissfully unaware.
 
 One super minimal plugin file, MIT licensed, installable via composer.
+
+`composer require tiny-pixel/admin-to-console`
 
 Feel free to hack at it and submit a PR.
 
