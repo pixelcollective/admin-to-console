@@ -9,6 +9,10 @@ use \WP_User;
 
 /**
  * Admin to Console
+ *
+ * @since   1.1.0
+ * @version 1.2.0
+ * @author  Kelly Mears <kelly@tinypixel.dev>
  */
 class AdminToConsole
 {
@@ -56,9 +60,7 @@ class AdminToConsole
      */
     public function noticeAction() : string
     {
-        return is_user_admin()
-            ? 'user_admin_notices'
-            : 'admin_notices';
+        return is_user_admin() ? 'user_admin_notices' : 'admin_notices';
     }
 
     /**
@@ -78,13 +80,12 @@ class AdminToConsole
      */
     public function writeToConsole() : void
     {
-        if (!$this->log = strip_tags(trim(ob_get_clean()))) {
+        if (! $this->log = strip_tags(trim(ob_get_clean()))) {
             return;
         }
 
         add_action('wp_enqueue_scripts', function () {
             wp_enqueue_script('admin-to-console', self::$scriptPath, []);
-
             wp_localize_script('admin-to-console', 'adminToConsole', [
                 'log' => $this->log,
             ]);
