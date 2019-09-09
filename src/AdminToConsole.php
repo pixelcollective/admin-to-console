@@ -11,7 +11,7 @@ use \WP_User;
  * Admin to Console
  *
  * @since   1.1.0
- * @version 1.2.0
+ * @version 1.3.0
  * @author  Kelly Mears <kelly@tinypixel.dev>
  */
 class AdminToConsole
