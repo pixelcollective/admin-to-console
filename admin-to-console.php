@@ -3,8 +3,8 @@
 /**
  * Plugin Name:   Admin To Console
  * Plugin URI:    https://tinypixel.io/
- * Description:   Send admin nags to the browser console.
- * Version:       1.2.0
+ * Description:   Pipes administrative notices to the developer console.
+ * Version:       1.3.0
  * Author:        Tiny Pixel Collective
  * Author URI:    https://tinypixel.io/
  * License:       MIT
